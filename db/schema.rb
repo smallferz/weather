@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170528151743) do
     t.string   "unique_identifier", null: false
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.index ["unique_identifier"], name: "index_users_on_unique_identifier", unique: true, using: :btree
   end
 
 end
