@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'pg'
 gem 'bootstrap'
+gem 'haml'
 
 
 group :development, :test do
