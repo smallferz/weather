@@ -1,5 +1,5 @@
 class Base < ApplicationRecord
-  #TODO rescue
+  #TODO rescue 'can not parse'
   def parse_json(data)
   end
 end

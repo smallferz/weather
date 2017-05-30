@@ -37,6 +37,13 @@ gem 'jbuilder', '~> 2.5'
 gem 'pg'
 gem 'bootstrap'
 gem 'haml'
+#for weather
+gem 'open-weather'
+
+gem 'xml-simple'
+gem 'jdpace-weatherman'
+
+gem 'weather-api'
 
 
 group :development, :test do
