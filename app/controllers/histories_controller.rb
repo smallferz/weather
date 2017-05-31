@@ -2,27 +2,27 @@ class HistoriesController < ApplicationController
   def index
     @history = History.find(params[:id])
     @history.city.last(3)
-
-    OpenWeather.new.call(city)
-    WeatherXoap.new.call(city)
-    YahooWeather.new.call(city)
   end
 
   def show
+    @history = History.find(params[:id])
+    @history.city.last
+    BaseWeather.new.call(city)
   end
 
   def create
-    @history = History.new(history_params)
+    @history = History.new(params.require(:history).permit(:city, :user_id))
     @history.save
-    redirect_to @history
+    redirect_to 'show'
   end
 
   def update
     @history = History.find(params[:id])
-      if @history.include?(city)
-        @hisroty.delete(city)
+      if @history.include?(city: '')
+        @hisroty.delete(city: '')
       end
     @history.update(history_params)
+    redirect_to 'show'
     end
 
   private

@@ -6,6 +6,8 @@ class WeatherXoap < Base
   def call(locations)
     response = WeatherMan.new(locations)
     #Current Conditions
+    temperature = weather.current_conditions.temperature
+    description = weather.current_conditions.description
   end
 
   def city_location(city)
