@@ -6,7 +6,7 @@ class HistoriesController < ApplicationController
 
   def show
     @history = History.find(params[:id])
-    @history.city.last
+    @history.city.last = city
     BaseWeather.new.call(city)
   end
 
@@ -23,7 +23,7 @@ class HistoriesController < ApplicationController
       end
     @history.update(history_params)
     redirect_to 'show'
-    end
+  end
 
   private
   def history_params
