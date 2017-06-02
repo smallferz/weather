@@ -7,5 +7,10 @@ class BaseService < ApplicationRecord
   end
 
   def parse_json(data)
+    begin
+      
+    rescue Exception
+      puts "ParseError"
+    end
   end
 end

@@ -3,8 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :current_user
 
   def current_data
-    require 'date'
-    d = Date.today
+    current_data = Date.today
   end
 
 
