@@ -7,7 +7,8 @@ class HistoriesController < ApplicationController
   def show
     @history = History.find(params[:id])
     @history.city.last = city
-    BaseWeather.new.call(city)
+    BaseService.new.call(city)
+
   end
 
   def create
@@ -18,8 +19,8 @@ class HistoriesController < ApplicationController
 
   def update
     @history = History.find(params[:id])
-      if @history.include?(city: '')
-        @hisroty.delete(city: '')
+      if @history.city.include?(city)
+        @hisroty.city.delete(city)
       end
     @history.update(history_params)
     redirect_to 'show'

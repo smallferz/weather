@@ -1,6 +1,6 @@
 require 'weather-api'
 
-class YahooWeather < Base
+class YahooWeatherService < BaseService
   def call
     response = Weather.lookup_by_location(@city_location, Weather::Units::FAHRENHEIT)
   end

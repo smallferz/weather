@@ -1,4 +1,4 @@
-class OpenWeather < Base
+class OpenWeatherService < BaseService
   def call(city)
   end
 
