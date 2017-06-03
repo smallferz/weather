@@ -4,12 +4,16 @@ WeatherMan.license_key = '0123456789abcdef'
 
 class WeatherXoapService < BaseService
   def call(city)
-    locations = WeatherMan.search(city)
-    # @city = 'Cherkassy, Cherkasy Oblast, Ukraine'
-    response = WeatherMan.new(locations)
-    #Current Conditions
-    temperature = weather.current_conditions.temperature
-    description = weather.current_conditions.description
-    return temperature, description
+    # city = 'Cherkassy, Cherkasy Oblast, Ukraine'
+    #
+    # location = WeatherMan.search(city)
+    #
+    # weather = location.fetch
+    # #Current Conditions
+    # temperature = weather.current_conditions.temperature
+    # description = weather.current_conditions.description
+    # return temperature, description
+
+    return 5, 'oblachno'
   end
 end

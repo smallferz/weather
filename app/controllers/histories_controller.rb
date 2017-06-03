@@ -1,33 +1,31 @@
 class HistoriesController < ApplicationController
+  before_action :find_history, only: [:index, :show, :update]
+
   def index
-    @history = History.find(params[:id])
-    @history.city.last(3)
+    @cities = @history.city.last(3)
   end
 
   def show
-    @history = History.find(params[:id])
     @history.city.last = city
-    BaseService.new.call(city)
-
+    BaseService.call(city)
   end
 
   def create
-    @history = History.new(params.require(:history).permit(:city, :user_id))
-    @history.save
-    redirect_to 'show'
+    history = History.create(history_params)
   end
 
   def update
-    @history = History.find(params[:id])
-      if @history.city.include?(city)
-        @hisroty.city.delete(city)
-      end
+    @hisroty.city.delete(city) if @history.city.include?(city)
     @history.update(history_params)
-    redirect_to 'show'
   end
 
   private
+
+  def find_history
+    @history = History.find(1)
+  end
+
   def history_params
-    params.require(:history).permit(:city)
+    params.require(:history).permit(:city, :user_id)
   end
 end

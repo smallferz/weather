@@ -35,14 +35,11 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'pg'
-gem 'bootstrap'
-gem 'haml'
+gem 'twitter-bootstrap-rails'
+gem 'haml-rails', '~> 0.9'
+gem 'simple_form'
 #for weather
 gem 'open-weather'
-
-gem 'xml-simple'
-gem 'jdpace-weatherman'
-
 gem 'weather-api'
 
 
