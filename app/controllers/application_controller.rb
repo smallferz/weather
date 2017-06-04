@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   private
   def current_user
     if
-      User.find_by_unique_identifier(cookies[:current_user_uuid])
+      User.find_by(unique_identifier: cookies.signed[:current_user_uuid])
     else
       User.create
     end
