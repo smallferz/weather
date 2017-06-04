@@ -1,11 +1,4 @@
 class UsersController < ApplicationController
-  def index
-  end
-
-  def show
-    @current_user = User.find(cookies[:current_user_uuid])
-  end
-
   def create
     @user = User.new(params[:user])
     if @user.save

@@ -1,5 +1,5 @@
 
 %h1 Wheather
-= simple_form histories_path, method: :post, remote: true do |form|
+= simple_form_for History.new, method: :post, remote: true do |form|
   = form.input :city
-  = form.submit
+  = form.submit 'find'

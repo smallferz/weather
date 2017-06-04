@@ -11,13 +11,19 @@ class HistoriesController < ApplicationController
   end
 
   def create
-    history = History.create(history_params)
+    @history = History.create(history_params)
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def update
     @hisroty.city.delete(city) if @history.city.include?(city)
     @history.city.push(city)
-    #dont add, replace
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
