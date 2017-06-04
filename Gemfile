@@ -40,7 +40,7 @@ gem 'haml-rails', '~> 0.9'
 gem 'simple_form'
 #for weather
 gem 'open-weather'
-gem 'weather-api'
+gem 'yahoo_weather'
 
 
 group :development, :test do

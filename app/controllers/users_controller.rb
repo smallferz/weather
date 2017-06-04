@@ -3,14 +3,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @current_user = User.find(session[:current_user_id])
+    @current_user = User.find(cookies[:current_user_uuid])
   end
 
   def create
     @user = User.new(params[:user])
     if @user.save
-      session[:current_user_id] = user.unique_identifier
-      session[:current_user_id] = user.id
+      cookies.signed[:current_user_uuid] = user.unique_identifier
     end
   end
 end

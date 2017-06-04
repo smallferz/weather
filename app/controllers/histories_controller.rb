@@ -7,7 +7,7 @@ class HistoriesController < ApplicationController
 
   def show
     @history.city.last = city
-    BaseService.call(city)
+    WeatherService.call(city)
   end
 
   def create
@@ -16,13 +16,15 @@ class HistoriesController < ApplicationController
 
   def update
     @hisroty.city.delete(city) if @history.city.include?(city)
-    @history.update(history_params)
+    @history.city.push(city)
+    #dont add, replace
   end
 
   private
 
   def find_history
-    @history = History.find(1)
+    @history = History.find_by(user_id: params[:user_id])
+    #@history = History.where("user_id = ?", params[:user_id])
   end
 
   def history_params

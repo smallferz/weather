@@ -4,11 +4,10 @@ class ApplicationController < ActionController::Base
 
   private
   def current_user
-  #   if @_current_user ||= session[:current_user_id] &&
-  #     User.find_by_unique_identifier(session[:current_user_id])
-  #     #upload session
-  #   else
-  #     # render 'users/create'
-  #   end
+    if
+      User.find_by_unique_identifier(cookies[:current_user_uuid])
+    else
+      User.create
+    end
   end
 end

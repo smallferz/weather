@@ -1,10 +1,13 @@
-require 'weather-api'
+require 'yahoo_weather'
 
-class YahooWeatherService < BaseService
+class YahooWeatherService < WeatherService
   def call
-    response = Weather.lookup_by_location(@city_location, Weather::Units::FAHRENHEIT)
-    temperature = response.condition.temp
-    description = response.condition.text
+    client = YahooWeather::Client.new
+    response = client.fetch_by_location(city)
+    response.units.temperature        # "F"
+    temperature = response.condition.temp           # 60
+    #temperature.convert_temperature
+    description = response.condition.code('string') # "Partly cloudy (night)"
     return temperature, description
   end
 
