@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   resources :users
   resource :histories
 
-  root 'histories#new'
+  root 'histories#index'
 end
