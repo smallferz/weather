@@ -12,11 +12,11 @@ class HistoriesController < ApplicationController
 
   def create
     @history = History.create(history_params)
-    respond_to do |format|
-      format.js
-      format.html
-    end
-    render "show"
+    # respond_to do |format|
+    #   format.js
+    #   format.html
+    # end
+    # render "show"
   end
 
   def update
@@ -31,9 +31,12 @@ class HistoriesController < ApplicationController
   private
 
   def find_history
-    @history = History.first
-    # @history = History.find_by(user_id: params[:user_id])
-    #@history = History.where("user_id = ?", params[:user_id])
+    if
+      @history = History.find_by(user_id: params[:user_id])
+      #@history = History.where("user_id = ?", params[:user_id])
+    else
+      @history = History.create
+    end
   end
 
   def history_params

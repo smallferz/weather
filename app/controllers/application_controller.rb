@@ -4,11 +4,20 @@ class ApplicationController < ActionController::Base
 
   private
   def current_user
-    User.first
-    # if
-    #   User.find_by(unique_identifier: cookies.signed[:current_user_uuid])
-    # else
-    #   User.create
-    # end
+    if @user ||= cookies[:uuid]
+      User.find_by(unique_identifier: cookies[:uuid])
+    else
+      @user = User.create
+      @user.set_cookies
+    end
+  end
+
+  def set_cookies
+    uuid = @user.unique_identifier
+    cookies[:uuid] = {
+     :value => uuid,
+     :expires => 1.year.from_now,
+     :domain => '.localhost'
+    }
   end
 end
